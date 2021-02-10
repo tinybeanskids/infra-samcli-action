@@ -1,6 +1,6 @@
 # https://github.com/lambci/docker-lambda
 FROM amazonlinux:2
-LABEL MAINTAINER="Anthony Cheng <anthony.cheng@tinybeans.com>"
+LABEL MAINTAINER="Tinybeans <tech@tinybeans.com>"
 
 RUN yum install -y which python3-devel shadow-utils && \
   pip3 install -U pip setuptools --no-cache-dir && \
