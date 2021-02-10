@@ -45,21 +45,21 @@ jobs:
       - name: Create ECR if needed
         run: aws ecr create-repository --repository-name tinybeans/$REPO_NAME || true
 
-      - name: SHA7
-        run: echo "SHA7=$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_ENV
+      - name: SHA
+        run: echo "SHA=$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_ENV
 
-      # - name: Check SHA7
-      #   run: echo $SHA7
+      # - name: Check SHA
+      #   run: echo $SHA
 
       - name: Docker build
         run: docker build -f docker/base/Dockerfile -t $REPO_NAME docker/base
 
       - name: Docker tags
         run: >
-          docker images && docker tag $REPO_NAME $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:SHA7 &&
-          docker tag $REPO_NAME $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:latest
+          docker tag $REPO_NAME:latest $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:$SHA &&
+          docker tag $REPO_NAME:latest $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:latest
 
       - name: Docker push
         run: >
-          docker images && docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:$SHA7 &&
+          docker images && docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:$SHA &&
           docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:latest
