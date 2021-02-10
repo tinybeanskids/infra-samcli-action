@@ -52,9 +52,14 @@ jobs:
       #   run: echo $SHA7
 
       - name: Docker build
+        run: docker build -f docker/base/Dockerfile -t $REPO_NAME docker/base
+
+      - name: Docker tags
         run: >
-          docker build -f docker/base/Dockerfile -t $REPO_NAME:$SHA7 docker/base &&
-          docker tag $REPO_NAME:$SHA7 $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:SHA7 &&
-          docker tag $REPO_NAME:$SHA7 $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:latest &&
-          docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:$SHA7 &&
+          docker images && docker tag $REPO_NAME $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:SHA7 &&
+          docker tag $REPO_NAME $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:latest
+
+      - name: Docker push
+        run: >
+          docker images && docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:$SHA7 &&
           docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/tinybeans/$REPO_NAME:latest
