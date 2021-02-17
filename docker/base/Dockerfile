@@ -20,4 +20,4 @@ RUN pip3 install --user --no-cache-dir -r requirements.txt
 
 WORKDIR /app
 
-CMD [ "sam", "--version"]
+ENTRYPOINT ["/entrypoint.sh"]
