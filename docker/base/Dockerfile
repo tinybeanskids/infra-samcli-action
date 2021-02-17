@@ -15,9 +15,9 @@ ENV AWS_DEFAULT_REGION us-west-2
 COPY requirements.txt requirements.txt
 
 USER aws
-ENV PATH=/home/aws/.local/bin:$PATH
 RUN pip3 install --user --no-cache-dir -r requirements.txt
 
 WORKDIR /app
+ENV PATH=/home/aws/.local/bin:/app/.local/bin:$PATH
 
 ENTRYPOINT ["/entrypoint.sh"]
