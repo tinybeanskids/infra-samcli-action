@@ -18,6 +18,6 @@ USER aws
 RUN pip3 install --user --no-cache-dir -r requirements.txt
 
 WORKDIR /app
-ENV PATH=/home/aws/.local/bin:/app/.local/bin:$PATH
+ENV PATH=/home/aws/.local/bin:$PATH
 
 ENTRYPOINT ["/entrypoint.sh"]

@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY ./ ./
 
-ENTRYPOINT [ "/bin/bash", "-c" ]
+ENTRYPOINT ["/entrypoint.sh"]
