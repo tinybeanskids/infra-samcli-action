@@ -7,6 +7,7 @@ RUN yum install -y which python3-devel shadow-utils && \
   yum clean all && rm -rf /var/cache/yum
 
 ENV AWS_DEFAULT_REGION us-west-2
+ENV SAM_CLI_TELEMETRY 0
 
 COPY requirements.txt requirements.txt
 
