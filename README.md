@@ -14,6 +14,7 @@ Set your ENV and write a command including AWS SAM-CLI to `cmd`.
 - `cmd` can have `bash` command.
 - `cmd` can have commands other than **sam** .
 
+Requires a few environment to be available:
 ```yml
 steps:
   - name: sam cli
@@ -31,3 +32,4 @@ steps:
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_ACCESS_KEY
 - AWS_DEFAULT_REGION
+- ACCOUNT
