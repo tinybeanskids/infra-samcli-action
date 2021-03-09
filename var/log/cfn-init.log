@@ -1,0 +1,43 @@
+2021-03-05 15:16:43,192 [INFO] -----------------------Starting build-----------------------
+2021-03-05 15:16:43,198 [INFO] Running configSets: _OnInstanceBoot
+2021-03-05 15:16:43,201 [INFO] Running configSet _OnInstanceBoot
+2021-03-05 15:16:43,204 [INFO] Running config AWSEBBaseConfig
+2021-03-05 15:17:14,981 [INFO] Command clearbackupfiles succeeded
+2021-03-05 15:17:14,985 [INFO] Running config AWSEBCfnHupEndpointOverride
+2021-03-05 15:17:14,988 [INFO] Command clearbackupfiles succeeded
+2021-03-05 15:17:14,990 [INFO] ConfigSets completed
+2021-03-05 15:17:14,990 [INFO] -----------------------Build complete-----------------------
+2021-03-05 15:18:26,161 [INFO] -----------------------Starting build-----------------------
+2021-03-05 15:18:26,167 [INFO] Running configSets: Infra-EmbeddedPreBuild
+2021-03-05 15:18:26,170 [INFO] Running configSet Infra-EmbeddedPreBuild
+2021-03-05 15:18:26,173 [INFO] Running config prebuild_0_tinybeans_core
+2021-03-05 15:18:27,296 [INFO] Command 01-wget succeeded
+2021-03-05 15:18:28,356 [INFO] Command 02-unzip succeeded
+2021-03-05 15:18:28,361 [INFO] Running config prebuild_1_tinybeans_core
+2021-03-05 15:18:28,534 [INFO] Running config prebuild_2_tinybeans_core
+2021-03-05 15:18:28,548 [ERROR] Command 01 (chkconfig awslogs on) failed
+2021-03-05 15:18:28,548 [ERROR] Error encountered during build of prebuild_2_tinybeans_core: Command 01 failed
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/construction.py", line 542, in run_config
+    CloudFormationCarpenter(config, self._auth_config).build(worklog)
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/construction.py", line 260, in build
+    changes['commands'] = CommandTool().apply(self._config.commands)
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/command_tool.py", line 117, in apply
+    raise ToolError(u"Command %s failed" % name)
+ToolError: Command 01 failed
+2021-03-05 15:18:28,558 [ERROR] -----------------------BUILD FAILED!------------------------
+2021-03-05 15:18:28,559 [ERROR] Unhandled exception during build: Command 01 failed
+Traceback (most recent call last):
+  File "/opt/aws/bin/cfn-init", line 171, in <module>
+    worklog.build(metadata, configSets)
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/construction.py", line 129, in build
+    Contractor(metadata).build(configSets, self)
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/construction.py", line 530, in build
+    self.run_config(config, worklog)
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/construction.py", line 542, in run_config
+    CloudFormationCarpenter(config, self._auth_config).build(worklog)
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/construction.py", line 260, in build
+    changes['commands'] = CommandTool().apply(self._config.commands)
+  File "/usr/lib/python2.7/site-packages/cfnbootstrap/command_tool.py", line 117, in apply
+    raise ToolError(u"Command %s failed" % name)
+ToolError: Command 01 failed
