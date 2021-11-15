@@ -1,3 +1,0 @@
-Mar  5 15:16:41 ip-10-1-33-84 crond[2301]: (CRON) INFO (RANDOM_DELAY will be scaled with factor 82% if used.)
-Mar  5 15:16:41 ip-10-1-33-84 crond[2301]: (CRON) INFO (running with inotify support)
-Mar  5 15:20:01 ip-10-1-33-84 CROND[2906]: (root) CMD (/usr/lib64/sa/sa1 1 1)
